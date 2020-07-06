@@ -8,9 +8,8 @@
 ![](https://uglyduck.ca/wp-content/uploads/2020/06/site-color-schemes.gif)
 _我的网站正在运行中的主题切换器_
 
-# The HTML
-First we need to include the “buttons” that will trigger the theme to switch based on which one is selected. (Note: you could always render these as `options` in a `select` element if you preferred that method)
-
+# HTML页面
+首先我们需要写几个"按钮"用来切换主题。(注意：同样也可以使用 `<select>`和`<option>`标签来完成这个切换)
 ```
 <div class="color-select">
     <button onclick="toggleDefaultTheme()"></button>
@@ -18,16 +17,15 @@ First we need to include the “buttons” that will trigger the theme to switch
     <button onclick="toggleThirdTheme()"></button>
 </div>
 ```
-That’s it! Don’t worry too much about the `onclick` parameter right now, we’ll come back to that when adding our JavaScript. The only remaining item is adding a default theme class to our `html` element, like so:
+如上所示。先不用担心`onclick`中的具体实现，再添加js代码时，我们再来看这里。现在，在Html页面我们只剩下添加一个默认的class在<html>上面，如下所示： 
 ```
 <html class="theme-default">
 ```
 
-# The CSS
+# CSS
+接下来，我们需要编写 `颜色选择`按钮样式和 网站自定义主题样式。我们先从主题样式开始。
 
-Next we need to style both the `color-select` buttons, along with the custom color schemes that will alter the entire website. We will start with the color schemes.
-
-For these themes to swap seamlessly between each other, we will be setting our altering color sets as CSS variables:
+为了使主题可以无缝切换，我们将使用**css变量**来设置颜色集合。 
 
 ```
 .theme-default {
@@ -50,7 +48,7 @@ body {
     color: var(--font-color);
 }
 ```
-Finally, we style the user-facing color swatches:
+之后，我们设置面向用户的，按钮颜色:
 
 ```
 .color-select button {
@@ -71,10 +69,11 @@ Finally, we style the user-facing color swatches:
 .color-select button:nth-child(3) { background: #d9455f; border-color: #303960; }
 ```
 
-# The JavaScript
+# JS
 
-We need to have each color swatch button trigger it’s corresponding theme and swap out the `theme-default` class that we have originally attached to the main `html` element. We also need to store what the user has selected into `localStorage`, so their choice persists when reloading or navigating to other pages.
-
+我们需要让每个控制按钮触发相应的主题，并且改变我们之前写在`<html>`上的`theme-default`类
+ 
+ 我们还需要将用户选择存储到`localStorage`，以便当用户再次加载或进入其他界面时所选样式依然存在。 
 ```
 // Set a given theme/color-scheme
 function setTheme(themeName) {
@@ -112,8 +111,8 @@ function toggleThirdTheme() {
     }
 })();
 ```
+如上所示。通过这些代码让你可以定义任何你想要呈现的主题----让你拥有无限可能!
 
-And that’s it! Now it just depends on how custom you want each individual theme style to be. The possibilities are endless!
+# 额外改进
 
-# Extra Improvements
-You could improve this concept even further hiding the color-select item if the user has JavaScript disabled. For my needs, I felt it was a fine trade-off to keep the non-functioning color swatch pickers if JavaScript was disabled. However, your project/site might need better fallbacks.
+如果用户禁用了JavaScript，你改进这个概念，甚至进一步隐藏颜色选择项。出于我的需要，我觉得如果JavaScript被禁用，保留不起作用的色样选择器是一个很好的权衡。但是，您的项目/站点可能需要更好的备用计划。
