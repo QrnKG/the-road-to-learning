@@ -2,13 +2,14 @@
 
 > 一种快速的主题切换
 
+# 【翻译】 一种快速的主题切换
 
 最近，我在我的网站上添加了一个非常简单的配色方案(主题)切换器。你可以在网站的页脚中切换这个简单的颜色切换器，来查看实际效果。我想，有人也想要将次功能添加到网站/项目中。于是我写下这篇短文来解释如何实现。让我们开始吧。
 
 ![](https://uglyduck.ca/wp-content/uploads/2020/06/site-color-schemes.gif)
 _我的网站正在运行中的主题切换器_
 
-# HTML页面
+## HTML
 首先我们需要写几个"按钮"用来切换主题。(注意：同样也可以使用 `<select>`和`<option>`标签来完成这个切换)
 ```
 <div class="color-select">
@@ -22,7 +23,7 @@ _我的网站正在运行中的主题切换器_
 <html class="theme-default">
 ```
 
-# CSS
+## CSS
 接下来，我们需要编写 `颜色选择`按钮样式和 网站自定义主题样式。我们先从主题样式开始。
 
 为了使主题可以无缝切换，我们将使用**css变量**来设置颜色集合。 
@@ -69,7 +70,7 @@ body {
 .color-select button:nth-child(3) { background: #d9455f; border-color: #303960; }
 ```
 
-# JS
+## JS
 
 我们需要让每个控制按钮触发相应的主题，并且改变我们之前写在`<html>`上的`theme-default`类
  
@@ -113,6 +114,22 @@ function toggleThirdTheme() {
 ```
 如上所示。通过这些代码让你可以定义任何你想要呈现的主题----让你拥有无限可能!
 
-# 额外改进
+## 额外改进
 
 如果用户禁用了JavaScript，你改进这个概念，甚至进一步隐藏颜色选择项。出于我的需要，我觉得如果JavaScript被禁用，保留不起作用的色样选择器是一个很好的权衡。但是，您的项目/站点可能需要更好的备用计划。
+
+
+---
+
+# 拓展
+
+## CSS Variables 兼容性
+- [兼容性查询](https://caniuse.com/#search=css%20va)
+
+## CSS Variables 教程
+- [CSS 变量教程 阮一峰](http://www.ruanyifeng.com/blog/2017/05/css-variables.html)
+- [CSS 变量 MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties)
+
+## demo
+- [预览](http://htmlpreview.github.io/?https://github.com/QrnKG/the-road-to-learning/blob/master/%E3%80%90%E8%AF%91%E3%80%91/CSS/%E3%80%90%E8%AF%91%E3%80%91%E5%BF%AB%E9%80%9F%E7%9A%84%E9%A2%98%E7%9B%AE%E5%88%87%E6%8D%A2/DEMO/index.html)
+- [项目地址](https://github.com/QrnKG/the-road-to-learning/tree/master/%E3%80%90%E8%AF%91%E3%80%91/CSS/%E3%80%90%E8%AF%91%E3%80%91%E5%BF%AB%E9%80%9F%E7%9A%84%E9%A2%98%E7%9B%AE%E5%88%87%E6%8D%A2)
